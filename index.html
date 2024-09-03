@@ -6,24 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Globeway</title>
 
-  <!-- Swiper CSS CDN link -->
+  <!-- swiper cdn link -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
-  <!-- Font Awesome CSS CDN link -->
+  <!-- font awesome cdn link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <!-- Custom CSS file link -->
+  <!-- custom css file link -->
   <link rel="stylesheet" href="/css/styles.css">
+  <script type="text/javascript" src="js/d3.min.js"></script>
+  <script type="text/javascript" src="js/d3.geo.min.js"></script>
 
-  <!-- D3.js library -->
-  <script src="js/d3.min.js"></script>
-  <script src="js/d3.geo.min.js"></script>
 </head>
 
 <body>
-  <!-- Header section starts -->
+  <!-- header section starts -->
+
   <header>
-    <div id="menu-bar" class="fas fa-bars" onclick="toggleMenu()"></div>
+    <div id="menu-bar" class="fas fa-bars"></div>
 
     <!-- GIF Logo -->
     <a href="#" class="logo">
@@ -50,14 +50,19 @@
       <label for="search-bar" class="fas fa-search"></label>
     </form>
   </header>
-  <!-- Header section ends -->
 
-  <!-- Login form container -->
+  <!-- header section ends -->
+
+  <!-- login form container -->
+
   <div class="login-form-container">
     <i class="fas fa-times" id="form-close"></i>
+
+
   </div>
 
-  <!-- Home section starts -->
+  <!-- home section starts -->
+
   <section class="home" id="home">
     <div class="content">
       <h3>Traveling leaves you speechless</h3>
@@ -66,20 +71,22 @@
     </div>
 
     <div class="controls">
-      <span class="vid-btn active" data-src="Images/video1.mp4"></span>
-      <span class="vid-btn" data-src="Images/video2.mp4"></span>
-      <span class="vid-btn" data-src="Images/video3.mp4"></span>
-      <span class="vid-btn" data-src="Images/video4.mp4"></span>
-      <span class="vid-btn" data-src="Images/video5.mp4"></span>
+      <span class="vid-btn active" data-src="Images/video 1.mp4"></span>
+      <span class="vid-btn" data-src="Images/video 2.mp4"></span>
+      <span class="vid-btn" data-src="Images/video 3.mp4"></span>
+      <span class="vid-btn" data-src="Images/video 4.mp4"></span>
+      <span class="vid-btn" data-src="Images/video 5.mp4"></span>
     </div>
 
     <div class="video-container">
-      <video src="Images/video1.mp4" id="video-slider" loop autoplay muted></video>
+      <video src="Images/video 1.mp4" id="video-slider" loop autoplay muted></video>
     </div>
-  </section> 
-  <!-- Home section ends -->
 
-  <!-- Book section starts -->
+  </section> 
+
+  <!-- home section ends -->
+
+  <!-- book section starts -->
   <section class="book" id="book">
     <h1 class="heading">
       <span>S</span>
@@ -98,28 +105,68 @@
 
     <div class="row">
       <div class="image">
-        <img src="Images/book-img.svg" alt="Book Image">
+        <img src="Images/book-img.svg" alt="">
       </div>
       <div id="chart"></div>
+    <script type="text/javascript">
+        var w = 600;
+        var h = 650;
+        var proj = d3.geo.mercator();
+        var path = d3.geo.path().projection(proj);
+        var t = proj.translate(); // the projection's default translation
+        var s = proj.scale() // the projection's default scale
+        var svg = d3.select("#chart")
+            .append("svg:svg")
+            .attr("width", w)
+            .attr("height", h)
+            .call(initialize);
+
+        var map = svg.append("svg:g");
+        var india = map.append("svg:g")
+            .attr("id", "india")
+            .style('stroke', '#000')
+            .style('stroke-width', '0.5');
+
+        d3.json("data/full_data-1.json", function (json) {
+            india.selectAll("path")
+                .data(json.features)
+                .enter().append("path")
+                .attr("d", path)
+                .style("fill", "#d1e4f3") // Uniform light blue fill
+                .on("mouseover", handleMouseOver)
+                .on("mouseout", handleMouseOut)
+                .on("click", function(d) {
+                    var stateId = d.id;
+                    window.location.href = stateId.replace(/ /g, "_").toLowerCase() + ".html";
+                })
+                .append("title")
+                .text(function(d){
+                    return "State : " + d.id + "\n Here goes the state data"; 
+                });
+        });
+
+        function handleMouseOver() {
+            d3.select(this).attr("stroke-width", "1.4");
+        }
+
+        function handleMouseOut() {
+            d3.select(this).attr("stroke-width", "0.5");
+        }
+
+        function initialize() {
+            proj.scale(6700);
+            proj.translate([-1240, 750]);
+        }
+    </script>
     </div>
   </section>
-  <!-- Book section ends -->
+  <!-- book section ends -->
 
-  <!-- Swiper JS CDN link -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Custom JS file link -->
+  <!-- custom js file link -->
   <script src="/js/script.js"></script>
+  <script src="/js/scriptt.js"></script>
 
-  <!-- Chart initialization script -->
-  <script src="/js/chart-init.js"></script>
-  
-  <!-- JS to toggle menu -->
-  <script>
-    function toggleMenu() {
-      var navbar = document.querySelector('.navbar');
-      navbar.classList.toggle('active');
-    }
-  </script>
 </body>
 </html>
