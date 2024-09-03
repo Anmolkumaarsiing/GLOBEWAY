@@ -27,22 +27,17 @@
 
     <!-- GIF Logo -->
     <a href="#" class="logo">
-      <img src="/Images/GlobeWay.gif" alt="Travel Logo" class="logo-gif">
+      <img src="/Imgs/Logo/logo.webp" alt="Travel Logo" class="logo-gif">
     </a>
 
     <nav class="navbar">
       <a href="#home">home</a>
-      <a href="#book">book</a>
-      <a href="#packages">packages</a>
-      <a href="#services">services</a>
-      <a href="#gallery">gallery</a>
-      <a href="#review">review</a>
-      <a href="#contact">contact</a>
+      <a href="#book">Select States</a>
     </nav>
 
     <div class="icons">
-      <i class="fas fa-search" id="search-btn"></i>
-      <a href="login.html" class="fas fa-user" id="login-btn"></a>
+      <i class="" id="search-btn"></i>
+      <a href="login.html" class="" id="login-btn"></a>
     </div>
 
     <form action="" class="search-bar-container">
@@ -105,7 +100,7 @@
 
     <div class="row">
       <div class="image">
-        <img src="Images/book-img.svg" alt="">
+        <img src="https://imagizer.imageshack.com/v2/800x600q70/922/QLHNEY.png" alt="">
       </div>
       <div id="chart"></div>
     <script type="text/javascript">
@@ -167,6 +162,25 @@
   <!-- custom js file link -->
   <script src="/js/script.js"></script>
   <script src="/js/scriptt.js"></script>
+  <script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
+  <script src="https://mediafiles.botpress.cloud/5944b1a9-1eca-4d28-9397-197c92c10462/webchat/v2.1/config.js"></script>
+      <script>
+        window.botpressWebChat.init({
+            "composerPlaceholder": "Chat with Globeway",
+            "botId": "5944b1a9-1eca-4d28-9397-197c92c10462",
+            "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+            "messagingUrl": "https://messaging.botpress.cloud",
+            "clientId": "80b3e50a-6f73-415a-9cbf-715d837973ae",
+            "lazySocket": true, 
+            "themeName": "prism",
+            "botName": "Globeway",
+            "avatarUrl": "https://www.shutterstock.com/image-vector/chat-bot-ai-customer-service-600nw-1713744196.jpg",
+            "frontendVersion": "v1",
+            "enableConversationDeletion": true,
+            "theme": "prism",
+            "themeColor": "#2563eb"
+        });
+      </script> 
 
 </body>
 </html>
