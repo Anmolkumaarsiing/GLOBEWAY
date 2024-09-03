@@ -51,7 +51,7 @@ section {
 
 .btn {
   display: inline-block;
-  margin-top: 2rem; /* Moved the button down */
+  margin-top: 2rem;
   background: var(--orange);
   color: #fff;
   padding: .8rem 3rem;
@@ -84,15 +84,15 @@ header .logo {
 }
 
 header .logo .logo-gif {
-  max-height: 50px; /* Adjust the size of the logo */
-  width: auto; /* Maintain aspect ratio */
+  max-height: 50px;
+  width: auto;
 }
 
 header .logo span {
   font-size: 2.5rem;
   font-weight: bolder;
   color: var(--orange);
-  margin-left: 1rem; /* Space between logo and text */
+  margin-left: 1rem;
 }
 
 header .navbar a {
@@ -260,7 +260,7 @@ header .search-bar-container label:hover {
 
 .home .content {
   text-align: center;
-  padding-top: 10rem; /* Pushes the content down */
+  padding-top: 10rem;
 }
 
 .home .content h3 {
@@ -307,50 +307,156 @@ header .search-bar-container label:hover {
 .home .controls .vid-btn.active {
   background: var(--orange);
 }
+
 .book {
   background: #f7f7f7;
-  padding: 1.5rem 5%; /* Further reduced padding */
+  padding: 1.5rem 5%;
 }
 
 .book .heading {
-  padding: 1.5rem 0; /* Further reduced padding */
+  padding: 1.5rem 0;
 }
 
 .book .heading span {
-  font-size: 2.5rem; /* Further reduced font size */
+  font-size: 2.5rem;
 }
 
 .book .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem; /* Reduced gap */
+  gap: 1.5rem;
   align-items: center;
 }
 
 .book .row .image {
-  flex: 1 1 20rem; /* Further reduced flex basis */
+  flex: 1 1 20rem;
 }
 
 .book .row .image img {
-  width: 70%; /* Further reduced image size */
-  max-width: 100%; /* Ensure image does not exceed its container */
+  width: 70%;
+  max-width: 100%;
   border-radius: .5rem;
 }
 
-@media (max-width: 768px) {
-  .book .row {
-    flex-direction: column;
-    align-items: center; /* Center items on small screens */
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  section {
+    padding: 2rem 5%;
   }
 
-  .book .row .image {
-    flex: 1 1 auto; /* Allow the image to adjust its size */
+  header {
+    padding: 1.5rem 5%;
   }
 
-  .book .row .image img {
-    width: 70%; /* Further reduce the image size on small screens */
-    max-width: 100%; /* Ensure image does not exceed its container */
-    border-radius: .5rem;
+  .heading span {
+    font-size: 3rem;
+  }
+
+  .btn {
+    padding: .8rem 2.5rem;
+    font-size: 1.5rem;
+  }
+
+  header .navbar a {
+    font-size: 1.8rem;
+    margin: 0.6rem;
+  }
+
+  header .icons i {
+    font-size: 1.8rem;
+    margin-right: 1.5rem;
   }
 }
 
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 3%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #menu-bar {
+    display: block;
+  }
+
+  header .navbar {
+    display: none;
+  }
+
+  header.active .navbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+  }
+
+  header .navbar a {
+    padding: 1rem 0;
+    margin: 0.5rem 0;
+  }
+
+  .home .content h3 {
+    font-size: 3.5rem;
+  }
+
+  .home .content p {
+    font-size: 2rem;
+  }
+
+  .book .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book .row .image {
+    flex: 1 1 auto;
+  }
+
+  .book .row .image img {
+    width: 80%;
+  }
+
+  .login-form-container form {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 50%;
+  }
+
+  header .logo span {
+    font-size: 2rem;
+  }
+
+  header .navbar a {
+    font-size: 1.5rem;
+  }
+
+  .home .content h3 {
+    font-size: 3rem;
+  }
+
+  .home .content p {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+    padding: .7rem 2rem;
+  }
+
+  .login-form-container form {
+    width: 95%;
+  }
+
+  .heading span {
+    font-size: 2.5rem;
+  }
+
+  .book .heading span {
+    font-size: 2rem;
+  }
+}
